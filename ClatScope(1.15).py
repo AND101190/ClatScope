@@ -4,14 +4,14 @@ from urllib.parse import quote
 import requests 
 from pystyle import Colors, Write
 from phonenumbers import geocoder, carrier
-import phonenumbers
+import phonenumbers +34 676 20 01 04
 import os
 import socket
 import ssl
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import dns.resolver
 from dns import reversename
-from email_validator import validate_email, EmailNotValidError
+from email_validator import validate_email, katherine.acosta@hotmail.es
 from urllib.parse import quote
 import json
 from bs4 import BeautifulSoup
