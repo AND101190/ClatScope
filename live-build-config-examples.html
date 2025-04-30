@@ -1,0 +1,466 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html class="gl-light ui-neutral with-top-bar with-header " lang="en">
+<head prefix="og: http://ogp.me/ns#">
+<meta charset="utf-8">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<title>Kali Linux / Recipes / live-build-config-examples · GitLab</title>
+<script nonce="zcNCIWe0IAIU+yb2ckIX0w==">
+//<![CDATA[
+window.gon={};gon.features={"inlineBlame":false,"removeMonitorMetrics":true,"issueEmailParticipants":true,"editBranchRules":true,"pageSpecificStyles":false,"blobRepositoryVueHeaderApp":true,"blobOverflowMenu":false,"filterBlobPath":true,"directoryCodeDropdownUpdates":false,"ciPipelineStatusRealtime":false,"workItems":true,"workItemsBeta":false,"workItemsAlpha":false};gon.licensed_features={"fileLocks":true,"securityOrchestrationPolicies":true,"remoteDevelopment":true};
+//]]>
+</script>
+
+
+<script nonce="zcNCIWe0IAIU+yb2ckIX0w==">
+//<![CDATA[
+var gl = window.gl || {};
+gl.startup_calls = {"/kalilinux/recipes/live-build-config-examples/-/refs/main/logs_tree/?format=json\u0026offset=0\u0026ref_type=heads":{},"/kalilinux/recipes/live-build-config-examples/-/blob/main/README.md?format=json\u0026viewer=rich":{}};
+gl.startup_graphql_calls = [{"query":"query pathLastCommit($projectPath: ID!, $path: String, $ref: String!, $refType: RefType) {\n  project(fullPath: $projectPath) {\n    __typename\n    id\n    repository {\n      __typename\n      lastCommit(path: $path, ref: $ref, refType: $refType) {\n        __typename\n        id\n        sha\n        title\n        titleHtml\n        descriptionHtml\n        message\n        webPath\n        authoredDate\n        authorName\n        authorGravatar\n        author {\n          __typename\n          id\n          name\n          avatarUrl\n          webPath\n        }\n        signature {\n          __typename\n          ... on GpgSignature {\n            gpgKeyPrimaryKeyid\n            verificationStatus\n          }\n          ... on X509Signature {\n            verificationStatus\n            x509Certificate {\n              id\n              subject\n              subjectKeyIdentifier\n              x509Issuer {\n                id\n                subject\n                subjectKeyIdentifier\n              }\n            }\n          }\n          ... on SshSignature {\n            verificationStatus\n            keyFingerprintSha256\n          }\n        }\n        pipelines(ref: $ref, first: 1) {\n          __typename\n          edges {\n            __typename\n            node {\n              __typename\n              id\n              detailedStatus {\n                __typename\n                id\n                detailsPath\n                icon\n                text\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n","variables":{"projectPath":"kalilinux/recipes/live-build-config-examples","ref":"main","path":""}}];
+
+if (gl.startup_calls && window.fetch) {
+  Object.keys(gl.startup_calls).forEach(apiCall => {
+   gl.startup_calls[apiCall] = {
+      fetchCall: fetch(apiCall, {
+        // Emulate XHR for Rails AJAX request checks
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+        // fetch won’t send cookies in older browsers, unless you set the credentials init option.
+        // We set to `same-origin` which is default value in modern browsers.
+        // See https://github.com/whatwg/fetch/pull/585 for more information.
+        credentials: 'same-origin'
+      })
+    };
+  });
+}
+if (gl.startup_graphql_calls && window.fetch) {
+  const headers = {"X-CSRF-Token":"k0uacgUd_HAsLIyBZrngaTE8WevIzxVRXApy0frIYMU1vK8IF4K4ewyZe-fNoQE_mbsmFZ-gngD4y8UGq2Rzkw","x-gitlab-feature-category":"groups_and_projects"};
+  const url = `https://gitlab.com/api/graphql`
+
+  const opts = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...headers,
+    }
+  };
+
+  gl.startup_graphql_calls = gl.startup_graphql_calls.map(call => ({
+    ...call,
+    fetchCall: fetch(url, {
+      ...opts,
+      credentials: 'same-origin',
+      body: JSON.stringify(call)
+    })
+  }))
+}
+
+
+//]]>
+</script>
+
+
+
+<link rel="stylesheet" href="/assets/application-2d41a6424a07717cdfc59340d1fd3200484026c592edea9a097119441657bb0d.css" />
+<link rel="stylesheet" href="/assets/page_bundles/project-c979cd46017105b9bde03f4a30dd8e84ac39a0967c13eeda38a286ed67f1b137.css" /><link rel="stylesheet" href="/assets/page_bundles/tree-36265195585af5e9c554d953e140f9c837af2e2eecb061d3f93d2857768eb286.css" /><link rel="stylesheet" href="/assets/page_bundles/commit_description-1e2cba4dda3c7b30dd84924809020c569f1308dea51520fe1dd5d4ce31403195.css" /><link rel="stylesheet" href="/assets/page_bundles/projects-80846bc4bdd46036586f0a20fdc1d14b080c3cabfcebf1f71b5e1cb019f70b56.css" /><link rel="stylesheet" href="/assets/page_bundles/work_items-0bab65ad25644020e75fa90592713316a101e5859001cf80e99afce8d173eba4.css" /><link rel="stylesheet" href="/assets/page_bundles/notes_shared-3bb84b0aaad44aa5af4a1dd05713ec998273465ef28436cc7d1d1b97602c6bff.css" />
+<link rel="stylesheet" href="/assets/application_utilities-f77f86f78d4146d4c2c821bc481cee77b897df284886ad189d8dcb1234cb9651.css" />
+<link rel="stylesheet" href="/assets/tailwind-a2b7f5a7eb0fcc3b021fef8d949abb65ecca2da7d05f7a5a7d0307d389c81f58.css" />
+
+
+<link rel="stylesheet" href="/assets/fonts-fae5d3f79948bd85f18b6513a025f863b19636e85b09a1492907eb4b1bb0557b.css" />
+<link rel="stylesheet" href="/assets/highlight/themes/white-99cce4f4b362f6840d7134d4129668929fde49c4da11d6ebf17f99768adbd868.css" />
+
+<script src="/assets/webpack/runtime.9f3d670d.bundle.js" defer="defer" nonce="zcNCIWe0IAIU+yb2ckIX0w=="></script>
+<script src="/assets/webpack/main.9c201595.chunk.js" defer="defer" nonce="zcNCIWe0IAIU+yb2ckIX0w=="></script>
+<script src="/assets/webpack/tracker.9165576d.chunk.js" defer="defer" nonce="zcNCIWe0IAIU+yb2ckIX0w=="></script>
+<script src="/assets/webpack/analytics.2d104337.chunk.js" defer="defer" nonce="zcNCIWe0IAIU+yb2ckIX0w=="></script>
+<script nonce="zcNCIWe0IAIU+yb2ckIX0w==">
+//<![CDATA[
+window.snowplowOptions = {"namespace":"gl","hostname":"snowplowprd.trx.gitlab.net","cookieDomain":".gitlab.com","appId":"gitlab","formTracking":true,"linkClickTracking":true}
+
+gl = window.gl || {};
+gl.snowplowStandardContext = {"schema":"iglu:com.gitlab/gitlab_standard/jsonschema/1-1-5","data":{"environment":"production","source":"gitlab-rails","correlation_id":"01JRRHBDCV9TGTCN4K8ETXQE6T","plan":"opensource","extra":{},"user_id":null,"global_user_id":null,"is_gitlab_team_member":null,"namespace_id":5077830,"project_id":12013457,"feature_enabled_by_namespace_ids":null,"realm":"saas","instance_id":"ea8bf810-1d6f-4a6a-b4fd-93e8cbd8b57f","unique_instance_id":"b5fa1911-0638-5651-8ec4-5b892ef92e35","host_name":"gitlab-webservice-web-57cf6d878c-wclcq","instance_version":"17.11.0","context_generated_at":"2025-04-13T21:37:08.774Z"}}
+gl.snowplowPseudonymizedPageUrl = "https://gitlab.com/namespace5077830/project12013457";
+gl.maskedDefaultReferrerUrl = null;
+gl.ga4MeasurementId = 'G-ENFH3X7M5Y';
+
+
+//]]>
+</script>
+<link rel="preload" href="/assets/application_utilities-f77f86f78d4146d4c2c821bc481cee77b897df284886ad189d8dcb1234cb9651.css" as="style" type="text/css" nonce="H4ZV/tMIKmLkWjIAafEJlg==">
+<link rel="preload" href="/assets/application-2d41a6424a07717cdfc59340d1fd3200484026c592edea9a097119441657bb0d.css" as="style" type="text/css" nonce="H4ZV/tMIKmLkWjIAafEJlg==">
+<link rel="preload" href="/assets/highlight/themes/white-99cce4f4b362f6840d7134d4129668929fde49c4da11d6ebf17f99768adbd868.css" as="style" type="text/css" nonce="H4ZV/tMIKmLkWjIAafEJlg==">
+<link crossorigin="" href="https://snowplowprd.trx.gitlab.net" rel="preconnect">
+<link as="font" crossorigin="" href="/assets/gitlab-sans/GitLabSans-1e0a5107ea3bbd4be93e8ad2c503467e43166cd37e4293570b490e0812ede98b.woff2" rel="preload">
+<link as="font" crossorigin="" href="/assets/gitlab-sans/GitLabSans-Italic-38eaf1a569a54ab28c58b92a4a8de3afb96b6ebc250cf372003a7b38151848cc.woff2" rel="preload">
+<link as="font" crossorigin="" href="/assets/gitlab-mono/GitLabMono-08d2c5e8ff8fd3d2d6ec55bc7713380f8981c35f9d2df14e12b835464d6e8f23.woff2" rel="preload">
+<link as="font" crossorigin="" href="/assets/gitlab-mono/GitLabMono-Italic-38e58d8df29485a20c550da1d0111e2c2169f6dcbcf894f2cd3afbdd97bcc588.woff2" rel="preload">
+<link rel="preload" href="/assets/fonts-fae5d3f79948bd85f18b6513a025f863b19636e85b09a1492907eb4b1bb0557b.css" as="style" type="text/css" nonce="H4ZV/tMIKmLkWjIAafEJlg==">
+
+
+
+<script src="/assets/webpack/sentry.f3d27abb.chunk.js" defer="defer" nonce="zcNCIWe0IAIU+yb2ckIX0w=="></script>
+
+<script src="/assets/webpack/commons-pages.groups.analytics.dashboards-pages.groups.harbor.repositories-pages.groups.iteration_ca-8504ae95.98e6f929.chunk.js" defer="defer" nonce="zcNCIWe0IAIU+yb2ckIX0w=="></script>
+<script src="/assets/webpack/commons-pages.search.show-super_sidebar.97112c09.chunk.js" defer="defer" nonce="zcNCIWe0IAIU+yb2ckIX0w=="></script>
+<script src="/assets/webpack/super_sidebar.c266fcf5.chunk.js" defer="defer" nonce="zcNCIWe0IAIU+yb2ckIX0w=="></script>
+<script src="/assets/webpack/commons-pages.projects-pages.projects.activity-pages.projects.alert_management.details-pages.project-bc0cba90.2327bf9c.chunk.js" defer="defer" nonce="zcNCIWe0IAIU+yb2ckIX0w=="></script>
+<script src="/assets/webpack/commons-pages.groups.packages-pages.groups.registry.repositories-pages.groups.security.policies.edit-429ebfda.bc735140.chunk.js" defer="defer" nonce="zcNCIWe0IAIU+yb2ckIX0w=="></script>
+<script src="/assets/webpack/19.ffa5e988.chunk.js" defer="defer" nonce="zcNCIWe0IAIU+yb2ckIX0w=="></script>
+<script src="/assets/webpack/69.bc356e68.chunk.js" defer="defer" nonce="zcNCIWe0IAIU+yb2ckIX0w=="></script>
+<script src="/assets/webpack/102.97024ca9.chunk.js" defer="defer" nonce="zcNCIWe0IAIU+yb2ckIX0w=="></script>
+<script src="/assets/webpack/commons-pages.projects.blob.show-pages.projects.commit.show-pages.projects.merge_requests.rapid_diff-6cfb71d6.efbc0aaf.chunk.js" defer="defer" nonce="zcNCIWe0IAIU+yb2ckIX0w=="></script>
+<script src="/assets/webpack/124.2b471f19.chunk.js" defer="defer" nonce="zcNCIWe0IAIU+yb2ckIX0w=="></script>
+<script src="/assets/webpack/122.2d207715.chunk.js" defer="defer" nonce="zcNCIWe0IAIU+yb2ckIX0w=="></script>
+<script src="/assets/webpack/commons-pages.projects.blob.show-pages.projects.show-pages.projects.snippets.show-pages.projects.tre-c684fcf6.93d9fdf3.chunk.js" defer="defer" nonce="zcNCIWe0IAIU+yb2ckIX0w=="></script>
+<script src="/assets/webpack/commons-pages.groups.show-pages.projects.blob.show-pages.projects.show-pages.projects.tree.show.18a9e344.chunk.js" defer="defer" nonce="zcNCIWe0IAIU+yb2ckIX0w=="></script>
+<script src="/assets/webpack/commons-pages.projects.blob.show-pages.projects.show-pages.projects.tree.show.bc66b627.chunk.js" defer="defer" nonce="zcNCIWe0IAIU+yb2ckIX0w=="></script>
+<script src="/assets/webpack/commons-pages.groups.show-pages.projects.home_panel-pages.projects.show.14b767ad.chunk.js" defer="defer" nonce="zcNCIWe0IAIU+yb2ckIX0w=="></script>
+<script src="/assets/webpack/pages.projects.show.85cb3247.chunk.js" defer="defer" nonce="zcNCIWe0IAIU+yb2ckIX0w=="></script>
+
+<meta content="object" property="og:type">
+<meta content="GitLab" property="og:site_name">
+<meta content="Kali Linux / Recipes / live-build-config-examples · GitLab" property="og:title">
+<meta content="Kali Linux Recipes" property="og:description">
+<meta content="https://gitlab.com/uploads/-/system/project/avatar/12013457/live-build-config-examples.png" property="og:image">
+<meta content="64" property="og:image:width">
+<meta content="64" property="og:image:height">
+<meta content="https://gitlab.com/kalilinux/recipes/live-build-config-examples" property="og:url">
+<meta content="summary" property="twitter:card">
+<meta content="Kali Linux / Recipes / live-build-config-examples · GitLab" property="twitter:title">
+<meta content="Kali Linux Recipes" property="twitter:description">
+<meta content="https://gitlab.com/uploads/-/system/project/avatar/12013457/live-build-config-examples.png" property="twitter:image">
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="HrMxfMsM_vuQXmiDMNJVWhamdMct8CL8g3nAk1leDte4RAQG2ZO68LDrn-WbyrQMviELOXqfqa0nuHdECPIdgQ" />
+<meta name="csp-nonce" content="zcNCIWe0IAIU+yb2ckIX0w==" />
+<meta name="action-cable-url" content="/-/cable" />
+<link href="/-/manifest.json" rel="manifest">
+<link rel="icon" type="image/png" href="/assets/favicon-72a2cad5025aa931d6ea56c3201d1f18e68a8cd39788c7c80d5b2b82aa5143ef.png" id="favicon" data-original-href="/assets/favicon-72a2cad5025aa931d6ea56c3201d1f18e68a8cd39788c7c80d5b2b82aa5143ef.png" />
+<link rel="apple-touch-icon" type="image/x-icon" href="/assets/apple-touch-icon-b049d4bc0dd9626f31db825d61880737befc7835982586d015bded10b4435460.png" />
+<link href="/search/opensearch.xml" rel="search" title="Search GitLab" type="application/opensearchdescription+xml">
+<link rel="alternate" type="application/atom+xml" title="live-build-config-examples activity" href="/kalilinux/recipes/live-build-config-examples.atom" />
+
+
+
+
+<meta content="Kali Linux Recipes" name="description">
+<meta content="#ececef" name="theme-color">
+</head>
+
+<body class="tab-width-8 gl-browser-safari gl-platform-ios " data-group="recipes" data-group-full-path="kalilinux/recipes" data-namespace-id="5077830" data-page="projects:show" data-page-type-id="live-build-config-examples" data-project="live-build-config-examples" data-project-full-path="kalilinux/recipes/live-build-config-examples" data-project-id="12013457">
+<div id="js-tooltips-container"></div>
+
+<script nonce="zcNCIWe0IAIU+yb2ckIX0w==">
+//<![CDATA[
+gl = window.gl || {};
+gl.client = {"isSafari":true,"isIos":true};
+
+
+//]]>
+</script>
+
+
+<header class="header-logged-out" data-testid="navbar">
+<a class="gl-sr-only gl-accessibility" href="#content-body">Skip to content</a>
+<div class="container-fluid">
+<nav aria-label="Explore GitLab" class="header-logged-out-nav gl-flex gl-gap-3 gl-justify-between">
+<div class="gl-flex gl-items-center gl-gap-1">
+<span class="gl-sr-only">GitLab</span>
+<a title="Homepage" id="logo" class="header-logged-out-logo has-tooltip" aria-label="Homepage" data-track-label="main_navigation" data-track-action="click_gitlab_logo_link" data-track-property="navigation_top" href="/"><svg aria-hidden="true" role="img" class="tanuki-logo" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path class="tanuki-shape tanuki" d="m24.507 9.5-.034-.09L21.082.562a.896.896 0 0 0-1.694.091l-2.29 7.01H7.825L5.535.653a.898.898 0 0 0-1.694-.09L.451 9.411.416 9.5a6.297 6.297 0 0 0 2.09 7.278l.012.01.03.022 5.16 3.867 2.56 1.935 1.554 1.176a1.051 1.051 0 0 0 1.268 0l1.555-1.176 2.56-1.935 5.197-3.89.014-.01A6.297 6.297 0 0 0 24.507 9.5Z"
+        fill="#E24329"/>
+  <path class="tanuki-shape right-cheek" d="m24.507 9.5-.034-.09a11.44 11.44 0 0 0-4.56 2.051l-7.447 5.632 4.742 3.584 5.197-3.89.014-.01A6.297 6.297 0 0 0 24.507 9.5Z"
+        fill="#FC6D26"/>
+  <path class="tanuki-shape chin" d="m7.707 20.677 2.56 1.935 1.555 1.176a1.051 1.051 0 0 0 1.268 0l1.555-1.176 2.56-1.935-4.743-3.584-4.755 3.584Z"
+        fill="#FCA326"/>
+  <path class="tanuki-shape left-cheek" d="M5.01 11.461a11.43 11.43 0 0 0-4.56-2.05L.416 9.5a6.297 6.297 0 0 0 2.09 7.278l.012.01.03.022 5.16 3.867 4.745-3.584-7.444-5.632Z"
+        fill="#FC6D26"/>
+</svg>
+
+</a></div>
+<ul class="gl-list-none gl-p-0 gl-m-0 gl-flex gl-gap-3 gl-items-center gl-grow">
+<li class="header-logged-out-nav-item header-logged-out-dropdown md:gl-hidden">
+<button class="header-logged-out-toggle" data-toggle="dropdown" type="button">
+<span class="gl-sr-only">
+Menu
+</span>
+<svg class="s16" data-testid="hamburger-icon"><use href="/assets/icons-aa2c8ddf99d22b77153ca2bb092a23889c12c597fc8b8de94b0f730eb53513f6.svg#hamburger"></use></svg>
+</button>
+<div class="dropdown-menu">
+<ul>
+<li>
+<a href="https://about.gitlab.com/why-gitlab">Why GitLab
+</a></li>
+<li>
+<a href="https://about.gitlab.com/pricing">Pricing
+</a></li>
+<li>
+<a href="https://about.gitlab.com/sales">Contact Sales
+</a></li>
+<li>
+<a href="/explore">Explore</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="header-logged-out-nav-item gl-hidden md:gl-inline-block">
+<a href="https://about.gitlab.com/why-gitlab">Why GitLab
+</a></li>
+<li class="header-logged-out-nav-item gl-hidden md:gl-inline-block">
+<a href="https://about.gitlab.com/pricing">Pricing
+</a></li>
+<li class="header-logged-out-nav-item gl-hidden gl-inline-block">
+<a href="https://about.gitlab.com/sales">Contact Sales
+</a></li>
+<li class="header-logged-out-nav-item gl-hidden md:gl-inline-block">
+<a class="" href="/explore">Explore</a>
+</li>
+</ul>
+<ul class="gl-list-none gl-p-0 gl-m-0 gl-flex gl-gap-3 gl-items-center gl-justify-end">
+<li class="header-logged-out-nav-item">
+<a href="/users/sign_in?redirect_to_referer=yes">Sign in</a>
+</li>
+<li class="header-logged-out-nav-item">
+<a class="gl-button btn btn-md btn-confirm !gl-inline-flex" href="/users/sign_up"><span class="gl-button-text">
+Get free trial
+
+</span>
+
+</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<div class="layout-page page-with-super-sidebar">
+<aside class="js-super-sidebar super-sidebar super-sidebar-loading" data-command-palette="{&quot;project_files_url&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/files/main?format=json&quot;,&quot;project_blob_url&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/blob/main&quot;}" data-force-desktop-expanded-sidebar="" data-is-saas="true" data-root-path="/" data-sidebar="{&quot;whats_new_most_recent_release_items_count&quot;:6,&quot;whats_new_version_digest&quot;:&quot;48f0954709a6c67a67281dc64a482f8793143a5f90b37653d5fe82bcbb697b5c&quot;,&quot;is_logged_in&quot;:false,&quot;context_switcher_links&quot;:[{&quot;title&quot;:&quot;Explore&quot;,&quot;link&quot;:&quot;/explore&quot;,&quot;icon&quot;:&quot;compass&quot;}],&quot;current_menu_items&quot;:[{&quot;id&quot;:&quot;project_overview&quot;,&quot;title&quot;:&quot;live-build-config-examples&quot;,&quot;avatar&quot;:&quot;/uploads/-/system/project/avatar/12013457/live-build-config-examples.png&quot;,&quot;entity_id&quot;:12013457,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples&quot;,&quot;link_classes&quot;:&quot;shortcuts-project&quot;,&quot;is_active&quot;:true},{&quot;id&quot;:&quot;manage_menu&quot;,&quot;title&quot;:&quot;Manage&quot;,&quot;icon&quot;:&quot;users&quot;,&quot;avatar_shape&quot;:&quot;rect&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/activity&quot;,&quot;is_active&quot;:false,&quot;items&quot;:[{&quot;id&quot;:&quot;activity&quot;,&quot;title&quot;:&quot;Activity&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/activity&quot;,&quot;link_classes&quot;:&quot;shortcuts-project-activity&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;members&quot;,&quot;title&quot;:&quot;Members&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/project_members&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;labels&quot;,&quot;title&quot;:&quot;Labels&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/labels&quot;,&quot;is_active&quot;:false}],&quot;separated&quot;:false},{&quot;id&quot;:&quot;plan_menu&quot;,&quot;title&quot;:&quot;Plan&quot;,&quot;icon&quot;:&quot;planning&quot;,&quot;avatar_shape&quot;:&quot;rect&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/issues&quot;,&quot;is_active&quot;:false,&quot;items&quot;:[{&quot;id&quot;:&quot;project_issue_list&quot;,&quot;title&quot;:&quot;Issues&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/issues&quot;,&quot;pill_count_field&quot;:&quot;openIssuesCount&quot;,&quot;link_classes&quot;:&quot;shortcuts-issues has-sub-items&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;boards&quot;,&quot;title&quot;:&quot;Issue boards&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/boards&quot;,&quot;link_classes&quot;:&quot;shortcuts-issue-boards&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;milestones&quot;,&quot;title&quot;:&quot;Milestones&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/milestones&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;iterations&quot;,&quot;title&quot;:&quot;Iterations&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/cadences&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;requirements&quot;,&quot;title&quot;:&quot;Requirements&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/requirements_management/requirements&quot;,&quot;is_active&quot;:false}],&quot;separated&quot;:false},{&quot;id&quot;:&quot;code_menu&quot;,&quot;title&quot;:&quot;Code&quot;,&quot;icon&quot;:&quot;code&quot;,&quot;avatar_shape&quot;:&quot;rect&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/merge_requests&quot;,&quot;is_active&quot;:false,&quot;items&quot;:[{&quot;id&quot;:&quot;project_merge_request_list&quot;,&quot;title&quot;:&quot;Merge requests&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/merge_requests&quot;,&quot;pill_count_field&quot;:&quot;openMergeRequestsCount&quot;,&quot;link_classes&quot;:&quot;shortcuts-merge_requests&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;files&quot;,&quot;title&quot;:&quot;Repository&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/tree/main&quot;,&quot;link_classes&quot;:&quot;shortcuts-tree&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;branches&quot;,&quot;title&quot;:&quot;Branches&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/branches&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;commits&quot;,&quot;title&quot;:&quot;Commits&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/commits/main?ref_type=heads&quot;,&quot;link_classes&quot;:&quot;shortcuts-commits&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;tags&quot;,&quot;title&quot;:&quot;Tags&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/tags&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;graphs&quot;,&quot;title&quot;:&quot;Repository graph&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/network/main?ref_type=heads&quot;,&quot;link_classes&quot;:&quot;shortcuts-network&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;compare&quot;,&quot;title&quot;:&quot;Compare revisions&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/compare?from=main\u0026to=main&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;project_snippets&quot;,&quot;title&quot;:&quot;Snippets&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/snippets&quot;,&quot;link_classes&quot;:&quot;shortcuts-snippets&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;file_locks&quot;,&quot;title&quot;:&quot;Locked files&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/path_locks&quot;,&quot;is_active&quot;:false}],&quot;separated&quot;:false},{&quot;id&quot;:&quot;build_menu&quot;,&quot;title&quot;:&quot;Build&quot;,&quot;icon&quot;:&quot;rocket&quot;,&quot;avatar_shape&quot;:&quot;rect&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/pipelines&quot;,&quot;is_active&quot;:false,&quot;items&quot;:[{&quot;id&quot;:&quot;pipelines&quot;,&quot;title&quot;:&quot;Pipelines&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/pipelines&quot;,&quot;link_classes&quot;:&quot;shortcuts-pipelines&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;jobs&quot;,&quot;title&quot;:&quot;Jobs&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/jobs&quot;,&quot;link_classes&quot;:&quot;shortcuts-builds&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;pipeline_schedules&quot;,&quot;title&quot;:&quot;Pipeline schedules&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/pipeline_schedules&quot;,&quot;link_classes&quot;:&quot;shortcuts-builds&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;test_cases&quot;,&quot;title&quot;:&quot;Test cases&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/quality/test_cases&quot;,&quot;link_classes&quot;:&quot;shortcuts-test-cases&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;artifacts&quot;,&quot;title&quot;:&quot;Artifacts&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/artifacts&quot;,&quot;link_classes&quot;:&quot;shortcuts-builds&quot;,&quot;is_active&quot;:false}],&quot;separated&quot;:false},{&quot;id&quot;:&quot;deploy_menu&quot;,&quot;title&quot;:&quot;Deploy&quot;,&quot;icon&quot;:&quot;deployments&quot;,&quot;avatar_shape&quot;:&quot;rect&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/releases&quot;,&quot;is_active&quot;:false,&quot;items&quot;:[{&quot;id&quot;:&quot;releases&quot;,&quot;title&quot;:&quot;Releases&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/releases&quot;,&quot;link_classes&quot;:&quot;shortcuts-deployments-releases&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;packages_registry&quot;,&quot;title&quot;:&quot;Package registry&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/packages&quot;,&quot;link_classes&quot;:&quot;shortcuts-container-registry&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;container_registry&quot;,&quot;title&quot;:&quot;Container registry&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/container_registry&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;model_registry&quot;,&quot;title&quot;:&quot;Model registry&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/ml/models&quot;,&quot;is_active&quot;:false}],&quot;separated&quot;:false},{&quot;id&quot;:&quot;operations_menu&quot;,&quot;title&quot;:&quot;Operate&quot;,&quot;icon&quot;:&quot;cloud-pod&quot;,&quot;avatar_shape&quot;:&quot;rect&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/environments&quot;,&quot;is_active&quot;:false,&quot;items&quot;:[{&quot;id&quot;:&quot;environments&quot;,&quot;title&quot;:&quot;Environments&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/environments&quot;,&quot;link_classes&quot;:&quot;shortcuts-environments&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;infrastructure_registry&quot;,&quot;title&quot;:&quot;Terraform modules&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/terraform_module_registry&quot;,&quot;is_active&quot;:false}],&quot;separated&quot;:false},{&quot;id&quot;:&quot;monitor_menu&quot;,&quot;title&quot;:&quot;Monitor&quot;,&quot;icon&quot;:&quot;monitor&quot;,&quot;avatar_shape&quot;:&quot;rect&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/incidents&quot;,&quot;is_active&quot;:false,&quot;items&quot;:[{&quot;id&quot;:&quot;incidents&quot;,&quot;title&quot;:&quot;Incidents&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/incidents&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;service_desk&quot;,&quot;title&quot;:&quot;Service Desk&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/issues/service_desk&quot;,&quot;is_active&quot;:false}],&quot;separated&quot;:false},{&quot;id&quot;:&quot;analyze_menu&quot;,&quot;title&quot;:&quot;Analyze&quot;,&quot;icon&quot;:&quot;chart&quot;,&quot;avatar_shape&quot;:&quot;rect&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/value_stream_analytics&quot;,&quot;is_active&quot;:false,&quot;items&quot;:[{&quot;id&quot;:&quot;cycle_analytics&quot;,&quot;title&quot;:&quot;Value stream analytics&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/value_stream_analytics&quot;,&quot;link_classes&quot;:&quot;shortcuts-project-cycle-analytics&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;contributors&quot;,&quot;title&quot;:&quot;Contributor analytics&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/graphs/main?ref_type=heads&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;ci_cd_analytics&quot;,&quot;title&quot;:&quot;CI/CD analytics&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/pipelines/charts&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;repository_analytics&quot;,&quot;title&quot;:&quot;Repository analytics&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/graphs/main/charts&quot;,&quot;link_classes&quot;:&quot;shortcuts-repository-charts&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;code_review&quot;,&quot;title&quot;:&quot;Code review analytics&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/analytics/code_reviews&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;issues&quot;,&quot;title&quot;:&quot;Issue analytics&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/analytics/issues_analytics&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;insights&quot;,&quot;title&quot;:&quot;Insights&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/insights/&quot;,&quot;link_classes&quot;:&quot;shortcuts-project-insights&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;model_experiments&quot;,&quot;title&quot;:&quot;Model experiments&quot;,&quot;link&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/ml/experiments&quot;,&quot;is_active&quot;:false}],&quot;separated&quot;:false}],&quot;current_context_header&quot;:&quot;Project&quot;,&quot;support_path&quot;:&quot;https://about.gitlab.com/get-help/&quot;,&quot;docs_path&quot;:&quot;/help/docs&quot;,&quot;display_whats_new&quot;:true,&quot;show_version_check&quot;:null,&quot;search&quot;:{&quot;search_path&quot;:&quot;/search&quot;,&quot;issues_path&quot;:&quot;/dashboard/issues&quot;,&quot;mr_path&quot;:&quot;/dashboard/merge_requests&quot;,&quot;autocomplete_path&quot;:&quot;/search/autocomplete&quot;,&quot;settings_path&quot;:&quot;/search/settings&quot;,&quot;search_context&quot;:{&quot;group&quot;:{&quot;id&quot;:5077830,&quot;name&quot;:&quot;Recipes&quot;,&quot;full_name&quot;:&quot;Kali Linux / Recipes&quot;},&quot;group_metadata&quot;:{&quot;issues_path&quot;:&quot;/groups/kalilinux/recipes/-/issues&quot;,&quot;mr_path&quot;:&quot;/groups/kalilinux/recipes/-/merge_requests&quot;},&quot;project&quot;:{&quot;id&quot;:12013457,&quot;name&quot;:&quot;live-build-config-examples&quot;},&quot;project_metadata&quot;:{&quot;mr_path&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/merge_requests&quot;,&quot;issues_path&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/issues&quot;},&quot;code_search&quot;:true,&quot;ref&quot;:&quot;main&quot;,&quot;scope&quot;:null,&quot;for_snippets&quot;:null}},&quot;panel_type&quot;:&quot;project&quot;,&quot;shortcut_links&quot;:[{&quot;title&quot;:&quot;Snippets&quot;,&quot;href&quot;:&quot;/explore/snippets&quot;,&quot;css_class&quot;:&quot;dashboard-shortcuts-snippets&quot;},{&quot;title&quot;:&quot;Groups&quot;,&quot;href&quot;:&quot;/explore/groups&quot;,&quot;css_class&quot;:&quot;dashboard-shortcuts-groups&quot;},{&quot;title&quot;:&quot;Projects&quot;,&quot;href&quot;:&quot;/explore/projects/starred&quot;,&quot;css_class&quot;:&quot;dashboard-shortcuts-projects&quot;}],&quot;terms&quot;:&quot;/-/users/terms&quot;}"></aside>
+
+<div class="content-wrapper">
+<div class="broadcast-wrapper">
+
+
+
+
+</div>
+<div class="alert-wrapper alert-wrapper-top-space gl-flex gl-flex-col gl-gap-3 container-fluid container-limited">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<div class="top-bar-fixed container-fluid" data-testid="top-bar">
+<div class="top-bar-container gl-flex gl-items-center gl-gap-2">
+<div class="gl-grow gl-basis-0 gl-flex gl-items-center gl-justify-start gl-gap-3">
+<button class="gl-button btn btn-icon btn-md btn-default btn-default-tertiary js-super-sidebar-toggle-expand super-sidebar-toggle -gl-ml-3" aria-controls="super-sidebar" aria-expanded="false" aria-label="Primary navigation sidebar" type="button"><svg class="s16 gl-icon gl-button-icon " data-testid="sidebar-icon"><use href="/assets/icons-aa2c8ddf99d22b77153ca2bb092a23889c12c597fc8b8de94b0f730eb53513f6.svg#sidebar"></use></svg>
+
+</button>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Kali Linux","item":"https://gitlab.com/kalilinux"},{"@type":"ListItem","position":2,"name":"Recipes","item":"https://gitlab.com/kalilinux/recipes"},{"@type":"ListItem","position":3,"name":"live-build-config-examples","item":"https://gitlab.com/kalilinux/recipes/live-build-config-examples"}]}
+
+
+</script>
+<div data-testid="breadcrumb-links" id="js-vue-page-breadcrumbs-wrapper">
+<div data-breadcrumbs-json="[{&quot;text&quot;:&quot;Kali Linux&quot;,&quot;href&quot;:&quot;/kalilinux&quot;,&quot;avatarPath&quot;:&quot;/uploads/-/system/group/avatar/5034914/kali-logo-dragon-blue-transparent.png&quot;},{&quot;text&quot;:&quot;Recipes&quot;,&quot;href&quot;:&quot;/kalilinux/recipes&quot;,&quot;avatarPath&quot;:&quot;/uploads/-/system/group/avatar/5077830/recipe.png&quot;},{&quot;text&quot;:&quot;live-build-config-examples&quot;,&quot;href&quot;:&quot;/kalilinux/recipes/live-build-config-examples&quot;,&quot;avatarPath&quot;:&quot;/uploads/-/system/project/avatar/12013457/live-build-config-examples.png&quot;}]" id="js-vue-page-breadcrumbs"></div>
+<div id="js-injected-page-breadcrumbs"></div>
+</div>
+
+
+</div>
+<div class="gl-flex-none gl-flex gl-items-center gl-justify-center gl-gap-4">
+<div id="js-work-item-feedback"></div>
+
+<div id="js-advanced-search-modal"></div>
+
+</div>
+<div class="gl-basis-0 gl-flex gl-items-center gl-justify-end">
+
+</div>
+</div>
+</div>
+
+<div class="container-fluid container-limited project-highlight-puc">
+<main class="content" id="content-body" itemscope itemtype="http://schema.org/SoftwareSourceCode">
+<div class="flash-container flash-container-page sticky" data-testid="flash-container">
+<div id="js-global-alerts"></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<header class="project-home-panel js-show-on-project-root gl-mt-5">
+<div class="gl-flex gl-justify-between gl-flex-wrap gl-flex-col md:gl-flex-row gl-gap-5">
+<div class="home-panel-title-row gl-flex gl-items-center">
+<img srcset="/uploads/-/system/project/avatar/12013457/live-build-config-examples.png?width=48 1x, /uploads/-/system/project/avatar/12013457/live-build-config-examples.png?width=96 2x" alt="live-build-config-examples" class="gl-avatar gl-avatar-s48 gl-self-start gl-shrink-0 gl-mr-4 !gl-rounded-base" height="48" width="48" loading="lazy" itemprop="image" src="/uploads/-/system/project/avatar/12013457/live-build-config-examples.png?width=48" />
+
+<h1 class="home-panel-title gl-heading-1 gl-flex gl-items-center gl-flex-wrap gl-gap-3 gl-break-anywhere gl-mb-0" data-testid="project-name-content" itemprop="name">
+live-build-config-examples
+<button class="has-tooltip gl-border-0 gl-bg-transparent gl-p-0 gl-leading-0 gl-text-inherit visibility-icon gl-inline-flex" data-container="body" data-placement="top" title="Public - The project can be accessed without any authentication." type="button" aria-label="Public - The project can be accessed without any authentication."><svg class="s16 gl-fill-icon-subtle" data-testid="earth-icon"><use href="/assets/icons-aa2c8ddf99d22b77153ca2bb092a23889c12c597fc8b8de94b0f730eb53513f6.svg#earth"></use></svg></button>
+
+
+</h1>
+</div>
+<div data-can-read-project="true" data-id="12013457" data-is-group="false" data-is-project-archived="false" data-is-project-empty="false" data-is-project-marked-for-deletion="false" data-project-avatar="/uploads/-/system/project/avatar/12013457/live-build-config-examples.png" data-project-id="12013457" data-project-name="live-build-config-examples" data-project-visibility-level="public" data-sign-in-path="/users/sign_in?redirect_to_referer=yes" data-star-count="45" data-starred="false" data-starrers-path="/kalilinux/recipes/live-build-config-examples/-/starrers" id="js-home-panel"></div>
+</div>
+
+</header>
+
+<div class="project-page-indicator js-show-on-project-root"></div>
+<div class="project-page-layout">
+<div class="project-page-layout-sidebar js-show-on-project-root gl-mt-5">
+<aside class="project-page-sidebar" data-testid="project-page-sidebar">
+<div class="project-page-sidebar-block home-panel-home-desc gl-py-4 gl-border-b gl-border-b-subtle !gl-pt-2">
+<h2 class="gl-text-base gl-font-bold gl-leading-reset gl-text-heading gl-m-0 gl-mb-1">Project information</h2>
+<div class="home-panel-description gl-break-words">
+<div class="home-panel-description-markdown read-more-container" data-read-more-height="320" itemprop="description">
+<div class="read-more-content read-more-content--has-scrim">
+<p data-sourcepos="1:1-1:18" dir="auto">Kali Linux Recipes</p>
+</div>
+<div class="js-read-more-trigger gl-hidden gl-w-full gl-h-8 gl-absolute gl-bottom-0 gl-z-2 gl-bg-default">
+<button aria-label="Expand project information" type="button" class="gl-button btn btn-md btn-link "><span class="gl-button-text">
+<svg class="s14" data-testid="chevron-down-icon"><use href="/assets/icons-aa2c8ddf99d22b77153ca2bb092a23889c12c597fc8b8de94b0f730eb53513f6.svg#chevron-down"></use></svg>
+Read more
+
+</span>
+
+</button></div>
+</div>
+</div>
+<div class="gl-mb-2">
+<div class="progress repository-languages-bar js-show-on-project-root"><div class="progress-bar has-tooltip" style="width: 100.0%; background-color:#89e051" data-html="true" title="&lt;span class=&quot;repository-language-bar-tooltip-language&quot;&gt;Shell&lt;/span&gt;&amp;nbsp;&lt;span class=&quot;repository-language-bar-tooltip-share&quot;&gt;100.0%&lt;/span&gt;"></div></div>
+</div>
+</div>
+<div class="project-page-sidebar-block gl-py-4 gl-border-b gl-border-b-subtle">
+<nav class="project-stats">
+<ul class="nav gl-gap-y-2 gl-gap-x-5">
+<li class="nav-item">
+<a class="nav-link stat-link !gl-px-0 !gl-pb-2" href="/kalilinux/recipes/live-build-config-examples/-/commits/main"><svg class="s16 gl-fill-icon-subtle gl-mr-3" data-testid="commit-icon"><use href="/assets/icons-aa2c8ddf99d22b77153ca2bb092a23889c12c597fc8b8de94b0f730eb53513f6.svg#commit"></use></svg><strong class="project-stat-value">23</strong> Commits</a>
+</li>
+<li class="nav-item">
+<a class="nav-link stat-link !gl-px-0 !gl-pb-2" href="/kalilinux/recipes/live-build-config-examples/-/branches"><svg class="s16 gl-fill-icon-subtle gl-mr-3" data-testid="branch-icon"><use href="/assets/icons-aa2c8ddf99d22b77153ca2bb092a23889c12c597fc8b8de94b0f730eb53513f6.svg#branch"></use></svg><strong class="project-stat-value">1</strong> Branch</a>
+</li>
+<li class="nav-item">
+<a class="nav-link stat-link !gl-px-0 !gl-pb-2" href="/kalilinux/recipes/live-build-config-examples/-/tags"><svg class="s16 gl-fill-icon-subtle gl-mr-3" data-testid="label-icon"><use href="/assets/icons-aa2c8ddf99d22b77153ca2bb092a23889c12c597fc8b8de94b0f730eb53513f6.svg#label"></use></svg><strong class="project-stat-value">8</strong> Tags</a>
+</li>
+</ul>
+
+</nav>
+</div>
+<div class="project-page-sidebar-block gl-py-4 gl-border-b gl-border-b-subtle">
+<div class="project-buttons gl-mb-2 js-show-on-project-root" data-testid="project-buttons">
+<ul class="nav gl-gap-y-2 gl-gap-x-5">
+<li class="nav-item">
+<a class="nav-link stat-link !gl-px-0 !gl-pb-2 btn-default" href="/kalilinux/recipes/live-build-config-examples/-/blob/main/README.md"><svg class="s16 gl-fill-icon-subtle gl-mr-3" data-testid="doc-text-icon"><use href="/assets/icons-aa2c8ddf99d22b77153ca2bb092a23889c12c597fc8b8de94b0f730eb53513f6.svg#doc-text"></use></svg>README</a>
+</li>
+<li class="nav-item">
+<a class="nav-link stat-link !gl-px-0 !gl-pb-2 btn-default" itemprop="license" href="/kalilinux/recipes/live-build-config-examples/-/blob/main/LICENSE"><svg class="s16 gl-fill-icon-subtle gl-mr-3" data-testid="scale-icon"><use href="/assets/icons-aa2c8ddf99d22b77153ca2bb092a23889c12c597fc8b8de94b0f730eb53513f6.svg#scale"></use></svg><span class="project-stat-value">GNU General Public License v2.0 or later</span></a>
+</li>
+</ul>
+
+</div>
+</div>
+
+<div class="project-page-sidebar-block gl-py-4">
+<p class="gl-font-bold gl-text-strong gl-m-0 gl-mb-1">Created on</p>
+<span>April 24, 2019</span>
+</div>
+</aside>
+
+</div>
+<div class="project-page-layout-content">
+<div class="project-show-files">
+<div class="tree-holder clearfix js-per-page gl-mt-5" data-blame-per-page="1000" id="tree-holder">
+<div data-breadcrumbs-can-collaborate="false" data-breadcrumbs-can-edit-tree="false" data-breadcrumbs-can-push-code="false" data-breadcrumbs-can-push-to-branch="false" data-breadcrumbs-new-blob-path="/kalilinux/recipes/live-build-config-examples/-/new/main" data-breadcrumbs-new-branch-path="/kalilinux/recipes/live-build-config-examples/-/branches/new" data-breadcrumbs-new-dir-path="/kalilinux/recipes/live-build-config-examples/-/create_dir/main" data-breadcrumbs-new-tag-path="/kalilinux/recipes/live-build-config-examples/-/tags/new" data-breadcrumbs-upload-path="/kalilinux/recipes/live-build-config-examples/-/create/main" data-download-links="[{&quot;text&quot;:&quot;zip&quot;,&quot;path&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/archive/main/live-build-config-examples-main.zip&quot;},{&quot;text&quot;:&quot;tar.gz&quot;,&quot;path&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/archive/main/live-build-config-examples-main.tar.gz&quot;},{&quot;text&quot;:&quot;tar.bz2&quot;,&quot;path&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/archive/main/live-build-config-examples-main.tar.bz2&quot;},{&quot;text&quot;:&quot;tar&quot;,&quot;path&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/archive/main/live-build-config-examples-main.tar&quot;}]" data-escaped-ref="main" data-http-url="https://gitlab.com/kalilinux/recipes/live-build-config-examples.git" data-kerberos-url="" data-new-workspace-path="/-/remote_development/workspaces/new" data-project-id="12013457" data-project-path="kalilinux/recipes/live-build-config-examples" data-project-root-path="/kalilinux/recipes/live-build-config-examples" data-ref="main" data-ref-type="heads" data-root-ref="main" data-ssh-url="git@gitlab.com:kalilinux/recipes/live-build-config-examples.git" data-web-ide-button-default-branch="main" data-web-ide-button-options="{&quot;project_path&quot;:&quot;kalilinux/recipes/live-build-config-examples&quot;,&quot;ref&quot;:&quot;main&quot;,&quot;is_fork&quot;:false,&quot;needs_to_fork&quot;:true,&quot;gitpod_enabled&quot;:false,&quot;is_blob&quot;:false,&quot;show_edit_button&quot;:false,&quot;show_web_ide_button&quot;:false,&quot;show_gitpod_button&quot;:false,&quot;show_pipeline_editor_button&quot;:false,&quot;web_ide_url&quot;:&quot;/-/ide/project/kalilinux/recipes/live-build-config-examples/edit/main&quot;,&quot;edit_url&quot;:&quot;&quot;,&quot;pipeline_editor_url&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/ci/editor?branch_name=main&quot;,&quot;gitpod_url&quot;:&quot;https://gitpod.io/#https://gitlab.com/kalilinux/recipes/live-build-config-examples/-/tree/main/&quot;,&quot;user_preferences_gitpod_path&quot;:&quot;/-/profile/preferences#user_gitpod_enabled&quot;,&quot;user_profile_enable_gitpod_path&quot;:&quot;/-/user_settings/profile?user%5Bgitpod_enabled%5D=true&quot;,&quot;new_workspace_path&quot;:&quot;/-/remote_development/workspaces/new&quot;,&quot;project_id&quot;:12013457,&quot;fork_path&quot;:&quot;/kalilinux/recipes/live-build-config-examples/-/forks/new&quot;,&quot;fork_modal_id&quot;:null}" data-xcode-url="" id="js-repository-blob-header-app"></div>
+<div class="info-well project-last-commit gl-flex-col gl-mt-5">
+<div class="gl-flex gl-items-center gl-justify-center gl-m-auto gl-min-h-9 lg:gl-min-h-[4.5rem]" data-history-link="/kalilinux/recipes/live-build-config-examples/-/commits/main" data-ref-type="heads" id="js-last-commit">
+<div class="gl-spinner-container" role="status"><span aria-hidden class="gl-spinner gl-spinner-md gl-spinner-dark !gl-align-text-bottom"></span><span class="gl-sr-only !gl-absolute">Loading</span>
+</div>
+</div>
+<div class="gl-hidden sm:gl-flex" data-branch="main" data-branch-rules-path="/kalilinux/recipes/live-build-config-examples/-/settings/repository#js-branch-rules" id="js-code-owners"></div>
+</div>
+<div data-escaped-ref="main" data-explain-code-available="false" data-full-name="Kali Linux / Recipes / live-build-config-examples" data-path-locks-available="true" data-path-locks-toggle="/kalilinux/recipes/live-build-config-examples/path_locks/toggle" data-project-path="kalilinux/recipes/live-build-config-examples" data-project-short-path="live-build-config-examples" data-ref="main" data-ref-type="heads" data-resource-id="gid://gitlab/Project/12013457" data-user-id="" id="js-tree-list"></div>
+</div>
+
+</div>
+</div>
+</div>
+
+</main>
+</div>
+
+
+</div>
+</div>
+
+
+<script nonce="zcNCIWe0IAIU+yb2ckIX0w==">
+//<![CDATA[
+if ('loading' in HTMLImageElement.prototype) {
+  document.querySelectorAll('img.lazy').forEach(img => {
+    img.loading = 'lazy';
+    let imgUrl = img.dataset.src;
+    // Only adding width + height for avatars for now
+    if (imgUrl.indexOf('/avatar/') > -1 && imgUrl.indexOf('?') === -1) {
+      const targetWidth = img.getAttribute('width') || img.width;
+      imgUrl += `?width=${targetWidth}`;
+    }
+    img.src = imgUrl;
+    img.removeAttribute('data-src');
+    img.classList.remove('lazy');
+    img.classList.add('js-lazy-loaded');
+    img.dataset.testid = 'js-lazy-loaded-content';
+  });
+}
+
+//]]>
+</script>
+<script nonce="zcNCIWe0IAIU+yb2ckIX0w==">
+//<![CDATA[
+gl = window.gl || {};
+gl.experiments = {};
+
+
+//]]>
+</script>
+
+</body>
+</html>
+

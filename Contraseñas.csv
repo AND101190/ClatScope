@@ -1,0 +1,24 @@
+Title,URL,Username,Password,Notes,OTPAuth
+es.dhgate.com (Katherine.acosta@hotmail.es),https://es.dhgate.com/,Katherine.acosta@hotmail.es,Martina3,,
+dhgate.com (Katherine.acosta@hotmail.es),https://dhgate.com/,Katherine.acosta@hotmail.es,Martina3,,
+secure.dhgate.com (Katherine.acosta@hotmail.es),https://secure.dhgate.com/,Katherine.acosta@hotmail.es,Martina3,,
+m.dhgate.com (Katherine.acosta@hotmail.es),https://m.dhgate.com/,Katherine.acosta@hotmail.es,Martina3,,
+m.es.dhgate.com (Katherine.acosta@hotmail.es),https://m.es.dhgate.com/,Katherine.acosta@hotmail.es,Martina3,,
+farfetch.com (a-n-d-e-r-s-o-n-@hotmail.es),http://farfetch.com/,a-n-d-e-r-s-o-n-@hotmail.es,Martina,,
+ibercaja.es (19-mar.-2015),http://ibercaja.es/,19-mar.-2015,20-mar.-2021,,otpauth://totp?secret=AA&algorithm=SHA1&digits=6&period=30
+ibercaja.es (19-mar.-2019),http://ibercaja.es/,19-mar.-2019,20-mar.-2021,,
+ibercaja.es (31-dic.-2018),http://ibercaja.es/,31-dic.-2018,20-mar.-2021,,
+ibercaja.es (997578480),http://ibercaja.es/,997578480,101190,,
+instagram.com (katherine.acosta@hotmail.es),https://instagram.com/,katherine.acosta@hotmail.es,Martina19.,,
+www.instagram.com (katherine.acosta@hotmail.es),https://www.instagram.com/,katherine.acosta@hotmail.es,Martina19.,,
+www.netflix.com (Brandonjahir9999@gmail.com),http://www.netflix.com/,Brandonjahir9999@gmail.com,1234567890brandon,,otpauth://totp?secret=BNNNNNA&algorithm=SHA1&digits=6&period=30
+netflix.com (Brandonjahir9999@gmail.com),https://netflix.com/,Brandonjahir9999@gmail.com,1234567890brandon,,otpauth://totp?secret=BNNNNNA&algorithm=SHA1&digits=6&period=30
+account.samsung.com (anderssonrey3@icloud.com),https://account.samsung.com/,anderssonrey3@icloud.com,Andersonrey3,,otpauth://totp?secret=ANDERSSONREY3ICLOUDCOMA&algorithm=SHA1&digits=6&period=30
+v3.account.samsung.com (anderssonrey3@icloud.com),https://v3.account.samsung.com/,anderssonrey3@icloud.com,Andersonrey3,,otpauth://totp?secret=ANDERSSONREY3ICLOUDCOMA&algorithm=SHA1&digits=6&period=30
+sonyentertainmentnetwork.com (a-n-d-e-r-s-o-n-@hotmail.es),https://sonyentertainmentnetwork.com/,a-n-d-e-r-s-o-n-@hotmail.es,tikcip-dehku4-cygqAb,,
+vodafone.es (a-n-d-e-r-s-o-n-@hotmail.es),http://vodafone.es/,a-n-d-e-r-s-o-n-@hotmail.es,101190,,
+m.vodafone.es (a-n-d-e-r-s-o-n-@hotmail.es),https://m.vodafone.es/,a-n-d-e-r-s-o-n-@hotmail.es,101190,,
+vodafone.es (anderssonrey3),http://vodafone.es/,anderssonrey3,101190,,
+192.168.1.1,http://192.168.1.1/,,tafzev-qisxo1-wonCiz,,
+192.168.1.1,https://192.168.1.1/,,tafzev-qisxo1-wonCiz,,
+60.250.68.23 (HI170630004),http://60.250.68.23:8090/,HI170630004,HI170630004,,
